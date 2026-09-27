@@ -11,8 +11,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
-    "eslint": "^10.8.1",
-    "html-validate": "^11.8.0"
+    "eslint": "^10.11.0",
+    "html-validate": "^11.16.0"
   },
   "engines": {
     "node": "^22.22.0 || >=24.8.0"
