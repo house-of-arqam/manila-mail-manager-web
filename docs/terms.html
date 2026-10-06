@@ -3,59 +3,109 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js/; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js/; connect-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Terms of Service — Manila Mail Manager</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="assets/base.css">
-  <link rel="stylesheet" href="assets/doc-page.css">
+  <link rel="stylesheet" href="assets/home.css">
+  <link rel="stylesheet" href="assets/article.css">
   <script src="assets/theme.js"></script>
 </head>
 <body>
-  <div class="container">
-    <a href="/" class="back">&larr; Back to Manila Mail Manager</a>
-    <h1>Terms of Service</h1>
-    <p class="updated">Last updated: September 24, 2026</p>
+  <header class="topbar">
+    <div class="wrap">
+      <nav>
+        <a href="/" class="nav-logo">
+          <img src="icon.png" alt="" width="30" height="30">
+          Manila Mail Manager
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html#how">How it works</a>
+          <a href="demo.html">Try the demo</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="index.html#faq">FAQ</a>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          </button>
+          <a href="https://chromewebstore.google.com/detail/eapejkmfejkjkfjimeecbdpkhmkgeipl" target="_blank" rel="noopener" class="btn btn-amber btn-nav">Add to Chrome</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-    <h2>Acceptance</h2>
-    <p>Manila Mail Manager is operated by House of Arqam Ventures LLC ("we", "us"). By installing or using Manila Mail Manager, you agree to these terms. If you don't agree, don't use the extension.</p>
-
-    <h2>The service</h2>
-    <p>Manila Mail Manager is a Chrome extension that helps you identify and manage email subscriptions in Gmail. The free tier provides subscription detection and one-by-one unsubscribe. The Pro tier adds an insights engine (subscription trends, dormant-subscription detection, and cleanup recommendations), unlimited tracked subscriptions, and bulk actions.</p>
-
-    <h2>Your responsibilities</h2>
-    <ul>
-      <li>You're responsible for your use of the extension and any actions taken through it (including unsubscribing from emails)</li>
-      <li>You must have a valid Gmail account to use the extension</li>
-      <li>Don't use the extension for anything illegal or harmful</li>
-    </ul>
-
-    <h2>Pro subscription</h2>
-    <ul>
-      <li><strong>Plans &amp; billing.</strong> Pro is billed monthly ($4.99/month) or yearly ($29.99/year), in advance.</li>
-      <li><strong>Automatic renewal.</strong> Paid subscriptions renew automatically at the end of each billing period at the then-current price, until you cancel. By subscribing, you authorize this recurring charge.</li>
-      <li><strong>Free trial.</strong> Pro is offered with a 7-day free trial. You can cancel anytime during the trial at no charge. When the trial ends, you continue on the free tier unless you start a paid subscription.</li>
-      <li><strong>Cancellation.</strong> You can cancel anytime from the extension's settings or through Paddle. Access continues until the end of the current billing period, and cancelling stops future renewals. Partial billing periods are not refunded. Because the extension re-checks your subscription periodically rather than continuously, Pro features may remain available for up to a few days after access ends.</li>
-      <li><strong>Merchant of record.</strong> Payments are processed by Paddle.com Market Limited, which acts as the merchant of record and reseller. Purchases are also subject to Paddle's <a href="https://www.paddle.com/legal/checkout-buyer-terms">buyer terms</a>; Paddle handles billing, applicable taxes, and refund processing.</li>
-      <li id="refunds"><strong>Refund policy.</strong> If you're not satisfied, you can request a refund within <strong>14 days</strong> of purchase by emailing <a href="mailto:support@manilamail.app">support@manilamail.app</a> or requesting one through Paddle — we'll refund the most recent payment. Statutory refund rights under Paddle's <a href="https://www.paddle.com/legal/checkout-buyer-terms">buyer terms</a> also apply.</li>
-      <li><strong>Price changes.</strong> We may change Pro pricing. Changes apply to renewals after reasonable notice; your current paid term is honored at the price you paid.</li>
-      <li><strong>License keys and devices.</strong> Pro is unlocked with a license key tied to your subscription, and one subscription may be active on up to <strong>3 devices</strong> at a time (each Chrome profile counts as a device). You can release your other devices at any time from the extension's settings, then activate the device you're using. Activation beyond that limit is refused, and keys for cancelled or expired subscriptions stop working — please don't share or resell your key.</li>
-    </ul>
-
-    <h2>Limitations</h2>
-    <p>The extension works by analyzing email content and headers to detect subscriptions. Detection is not 100% accurate. The unsubscribe feature relies on email senders honoring unsubscribe requests — we cannot guarantee that all unsubscribe attempts will succeed.</p>
-
-    <h2>Disclaimer</h2>
-    <p>Manila Mail Manager is provided "as is" without warranty. We are not responsible for any emails you miss, subscriptions incorrectly identified, or unsubscribe actions that don't take effect.</p>
-
-    <h2>Governing law</h2>
-    <p>These terms are governed by the laws of the State of Texas, USA, without regard to its conflict-of-law rules. Nothing in these terms takes away mandatory consumer protections you have under the law of the country where you live.</p>
-
-    <h2>Changes</h2>
-    <p>We may update these terms. Continued use after changes constitutes acceptance.</p>
-
-    <h2>Contact</h2>
-    <p>Questions? Email <a href="mailto:support@manilamail.app">support@manilamail.app</a></p>
+  <div class="doc-head">
+    <div class="wrap">
+      <p class="eyebrow">Legal</p>
+      <h1 class="serif">Terms of Service</h1>
+      <p class="updated">Last updated: September 24, 2026</p>
+    </div>
   </div>
+
+  <main class="wrap doc-body">
+    <div class="doc-prose">
+      <h2>Acceptance</h2>
+      <p>Manila Mail Manager is operated by House of Arqam Ventures LLC ("we", "us"). By installing or using Manila Mail Manager, you agree to these terms. If you don't agree, don't use the extension.</p>
+
+      <h2>The service</h2>
+      <p>Manila Mail Manager is a Chrome extension that helps you identify and manage email subscriptions in Gmail. The free tier provides subscription detection and one-by-one unsubscribe. The Pro tier adds an insights engine (subscription trends, dormant-subscription detection, and cleanup recommendations), unlimited tracked subscriptions, and bulk actions.</p>
+
+      <h2>Your responsibilities</h2>
+      <ul>
+        <li>You're responsible for your use of the extension and any actions taken through it (including unsubscribing from emails)</li>
+        <li>You must have a valid Gmail account to use the extension</li>
+        <li>Don't use the extension for anything illegal or harmful</li>
+      </ul>
+
+      <h2>Pro subscription</h2>
+      <ul>
+        <li><strong>Plans &amp; billing.</strong> Pro is billed monthly ($4.99/month) or yearly ($29.99/year), in advance.</li>
+        <li><strong>Automatic renewal.</strong> Paid subscriptions renew automatically at the end of each billing period at the then-current price, until you cancel. By subscribing, you authorize this recurring charge.</li>
+        <li><strong>Free trial.</strong> Pro is offered with a 7-day free trial. You can cancel anytime during the trial at no charge. When the trial ends, you continue on the free tier unless you start a paid subscription.</li>
+        <li><strong>Cancellation.</strong> You can cancel anytime from the extension's settings or through Paddle. Access continues until the end of the current billing period, and cancelling stops future renewals. Partial billing periods are not refunded. Because the extension re-checks your subscription periodically rather than continuously, Pro features may remain available for up to a few days after access ends.</li>
+        <li><strong>Merchant of record.</strong> Payments are processed by Paddle.com Market Limited, which acts as the merchant of record and reseller. Purchases are also subject to Paddle's <a href="https://www.paddle.com/legal/checkout-buyer-terms">buyer terms</a>; Paddle handles billing, applicable taxes, and refund processing.</li>
+        <li id="refunds"><strong>Refund policy.</strong> If you're not satisfied, you can request a refund within <strong>14 days</strong> of purchase by emailing <a href="mailto:support@manilamail.app">support@manilamail.app</a> or requesting one through Paddle — we'll refund the most recent payment. Statutory refund rights under Paddle's <a href="https://www.paddle.com/legal/checkout-buyer-terms">buyer terms</a> also apply.</li>
+        <li><strong>Price changes.</strong> We may change Pro pricing. Changes apply to renewals after reasonable notice; your current paid term is honored at the price you paid.</li>
+        <li><strong>License keys and devices.</strong> Pro is unlocked with a license key tied to your subscription, and one subscription may be active on up to <strong>3 devices</strong> at a time (each Chrome profile counts as a device). You can release your other devices at any time from the extension's settings, then activate the device you're using. Activation beyond that limit is refused, and keys for cancelled or expired subscriptions stop working — please don't share or resell your key.</li>
+      </ul>
+
+      <h2>Limitations</h2>
+      <p>The extension works by analyzing email content and headers to detect subscriptions. Detection is not 100% accurate. The unsubscribe feature relies on email senders honoring unsubscribe requests — we cannot guarantee that all unsubscribe attempts will succeed.</p>
+
+      <h2>Disclaimer</h2>
+      <p>Manila Mail Manager is provided "as is" without warranty. We are not responsible for any emails you miss, subscriptions incorrectly identified, or unsubscribe actions that don't take effect.</p>
+
+      <h2>Governing law</h2>
+      <p>These terms are governed by the laws of the State of Texas, USA, without regard to its conflict-of-law rules. Nothing in these terms takes away mandatory consumer protections you have under the law of the country where you live.</p>
+
+      <h2>Changes</h2>
+      <p>We may update these terms. Continued use after changes constitutes acceptance.</p>
+
+      <h2>Contact</h2>
+      <p>Questions? Email <a href="mailto:support@manilamail.app">support@manilamail.app</a></p>
+    </div>
+  </main>
+
+  <div class="closing closing-slim">
+    <footer class="wrap">
+      <div class="footer-left">
+        <img src="hoa-logo.png" alt="House of Arqam Ventures LLC" width="24" height="24" loading="lazy">
+        © House of Arqam Ventures LLC · makers of <a href="https://sponsir.app" rel="noopener">Sponsir</a>
+      </div>
+      <div class="footer-links">
+        <a href="demo.html">Demo</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="terms.html#refunds">Refunds</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/home.js"></script>
 </body>
 </html>

@@ -68,8 +68,83 @@ function markActiveSection() {
   });
 }
 
-window.addEventListener('scroll', markActiveSection, { passive: true });
-markActiveSection();
+const topbar = document.querySelector('.topbar');
+
+function onScroll() {
+  markActiveSection();
+  if (topbar) topbar.classList.toggle('is-scrolled', window.scrollY > 4);
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// Hero: play a scan of the sample inbox once, when it first comes into view.
+// The markup is the finished state, so visitors without JS or with reduced
+// motion see the same picture, still.
+const heroScan = document.getElementById('hero-scan');
+
+if (heroScan && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const rows = Array.from(heroScan.querySelectorAll('.scan-row'));
+  const unsubRows = rows.filter(row => row.dataset.verdict === 'unsub');
+  const label = heroScan.querySelector('.scan-btn-label');
+  const progress = heroScan.querySelector('.scan-progress span');
+  const foundEl = document.getElementById('scan-found');
+  const goneEl = document.getElementById('scan-gone');
+  const TAGS = { keep: 'Keep', paid: 'Paid', unsub: 'Unsubscribe', working: 'Working…', done: 'Unsubscribed' };
+
+  const setTag = (row, state) => {
+    const tag = row.querySelector('.scan-tag');
+    tag.className = 'scan-tag scan-tag-' + state;
+    tag.textContent = TAGS[state];
+  };
+
+  const play = () => {
+    heroScan.classList.add('is-animating');
+    rows.forEach(row => {
+      row.classList.remove('is-seen', 'is-done', 'is-hl');
+      setTag(row, row.dataset.verdict);
+    });
+    progress.style.setProperty('--p', '0');
+    label.textContent = 'Scanning inbox…';
+    foundEl.textContent = '0';
+    goneEl.textContent = '0';
+
+    let t = 500;
+    const at = (delay, fn) => setTimeout(fn, delay);
+    rows.forEach((row, i) => {
+      at(t + i * 450, () => {
+        row.classList.add('is-seen');
+        foundEl.textContent = String(i + 1);
+        progress.style.setProperty('--p', String((i + 1) / rows.length));
+      });
+    });
+    t += rows.length * 450 + 250;
+    at(t, () => { label.textContent = 'Scan complete'; });
+    t += 800;
+    unsubRows.forEach((row, i) => {
+      at(t, () => { row.classList.add('is-hl'); setTag(row, 'working'); });
+      at(t + 700, () => {
+        row.classList.remove('is-hl');
+        row.classList.add('is-done');
+        setTag(row, 'done');
+        goneEl.textContent = String(i + 1);
+      });
+      t += 950;
+    });
+    at(t, () => heroScan.classList.remove('is-animating'));
+  };
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting) return;
+      observer.disconnect();
+      play();
+    }, { threshold: 0.35 });
+    observer.observe(heroScan);
+  } else {
+    play();
+  }
+}
 
 // Mobile nav toggle
 const navToggle = document.getElementById('nav-toggle');
