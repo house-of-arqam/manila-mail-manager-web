@@ -3,83 +3,120 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js/; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js/; connect-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Support — Manila Mail Manager</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="assets/base.css">
-  <link rel="stylesheet" href="assets/doc-page.css">
+  <link rel="stylesheet" href="assets/home.css">
+  <link rel="stylesheet" href="assets/article.css">
   <script src="assets/theme.js"></script>
-  <style>
-    .contact-box {
-      margin: 16px 0 32px;
-      padding: 16px 18px;
-      background: light-dark(#fffbeb, #2A2011);
-      border: 1px solid light-dark(#fde68a, #4A3714);
-      border-radius: 10px;
-      font-size: 15px;
-      color: light-dark(#92400e, #F0C286);
-    }
-    .contact-box a { color: light-dark(#b45309, #F5A93C); font-weight: 600; }
-    h2 { margin: 32px 0 8px; }
-  </style>
 </head>
 <body>
-  <div class="container">
-    <a href="/" class="back">&larr; Back to Manila Mail Manager</a>
-    <h1>Support</h1>
-    <p class="lede">Questions, bugs, billing, or feedback — we're happy to help.</p>
-
-    <div class="contact-box">
-      Email us at <a href="mailto:support@manilamail.app">support@manilamail.app</a> and we'll get back to you, usually within a day.
+  <header class="topbar">
+    <div class="wrap">
+      <nav>
+        <a href="/" class="nav-logo">
+          <img src="icon.png" alt="" width="30" height="30">
+          Manila Mail Manager
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html#how">How it works</a>
+          <a href="demo.html">Try the demo</a>
+          <a href="index.html#pricing">Pricing</a>
+          <a href="index.html#faq">FAQ</a>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          </button>
+          <a href="https://chromewebstore.google.com/detail/eapejkmfejkjkfjimeecbdpkhmkgeipl" target="_blank" rel="noopener" class="btn btn-amber btn-nav">Add to Chrome</a>
+        </div>
+      </nav>
     </div>
+  </header>
 
-    <h2>How does Manila Mail Manager find my subscriptions?</h2>
-    <p>It reads the subscription emails already in your Gmail inbox — entirely inside your browser. It does <strong>not</strong> use the Gmail API, and your email content is never sent to any server. Click the extension icon and "Scan Inbox" to detect them.</p>
-
-    <h2>Is my email private?</h2>
-    <p>Yes. All detection happens locally in your browser, and your detected subscriptions are stored on your own device. The only things that leave your browser are requests to our licensing service (for trials, checkout, and license verification — never email content) and your own Google profile photo. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
-
-    <h2>How do I unsubscribe?</h2>
-    <p>Open the extension, find the sender, and click <strong>Unsubscribe</strong> — we take you straight to the right unsubscribe page. Unsubscribing relies on senders honoring the request, so a few stubborn senders may keep emailing.</p>
-
-    <h2>Unsubscribe, ignore, block or spam — which do I want?</h2>
-    <ul>
-      <li><strong>Unsubscribe</strong> asks the sender to stop emailing you, by opening their unsubscribe page.</li>
-      <li><strong>Ignore</strong> hides the sender inside Manila Mail Manager only. You stay subscribed and their emails keep arriving in Gmail — they just stop showing up in your subscription list, your stats, and your Gmail badges. Use it for newsletters you want to keep.</li>
-      <li><strong>Block sender</strong> and <strong>Report as spam</strong> are Gmail's own actions, and they do change how Gmail treats the mail.</li>
-      <li><strong>The wand</strong> (Magic Cleanup) just folds subscription emails out of the list you're looking at, for as long as you're looking at it. Nothing about the mail changes.</li>
-    </ul>
-
-    <h2>How do I ignore a sender, and how do I undo it?</h2>
-    <p>Click <strong>Ignore</strong> on the sender's row in the extension, or choose <strong>Ignore Sender</strong> from the badge menu in Gmail. Ignoring applies to the whole brand, so a company's other sending addresses (say their news and promos addresses) go quiet too, and it sticks across future scans.</p>
-    <p>To undo it, open <strong>Subscriptions</strong>, set the status filter to <strong>Ignored</strong>, and click <strong>Restore</strong> — or <strong>Restore all</strong> to bring everything back. Restoring returns the sender with its history intact; nothing was deleted while it was hidden.</p>
-
-    <h2>What is the wand button next to Compose?</h2>
-    <p>That's <strong>Magic Cleanup</strong>: click it and every subscription email in the current list folds out of view, leaving the mail from real people. Click it again to bring them all back. It's free and included in the free tier.</p>
-    <p>It only changes what you see. Those emails are <strong>not</strong> deleted, archived, marked read, moved or unsubscribed, and nothing is changed in Gmail itself — so anything you hide reappears on its own when you switch labels, run a search, or reload Gmail.</p>
-    <p>The counter next to the wand opens a list of exactly what's hidden, with a <strong>Show</strong> button to bring back individual emails. If you'd rather not have the button in your toolbar, turn off <strong>Magic Cleanup Button</strong> in the extension's <strong>Settings</strong>.</p>
-
-    <h2>What's in Pro, and is there a trial?</h2>
-    <p>Pro adds the inbox health score, the paid-subscription spend tracker, the insights engine (trends, dormant senders, cleanup tips), automatic detection of new subscriptions, bulk unsubscribe, and unlimited tracking. Pro starts with a <strong>7-day free trial — no card required</strong>; tap "Start free trial" in the extension.</p>
-
-    <h2>How do I activate Pro?</h2>
-    <p>Pro activates automatically: after payment, the extension detects your completed checkout and unlocks Pro within a couple of minutes — you can close the checkout tab as soon as payment succeeds. If you have a license key (for example from another device), open the extension &rarr; <strong>Settings</strong>, paste it into "License key", and click <strong>Activate</strong>.</p>
-
-    <h2>How many devices can I use Pro on?</h2>
-    <p>Up to <strong>three</strong>, and a separate Chrome profile counts as one of them — so a work laptop, a home machine and a second profile all fit. Paste your license key into <strong>Settings</strong> on each one.</p>
-
-    <h2>It says I've used all my devices.</h2>
-    <p>That happens after a reinstall, clearing the extension's data, or a new laptop — the old installation still holds a slot. Open <strong>Settings</strong> &rarr; <strong>Deactivate my other devices</strong>, then click <strong>Activate</strong> on the device you're using now; the released devices drop back to the free tier the next time they check in. Still stuck? Email us.</p>
-
-    <h2>I lost my license key.</h2>
-    <p>Your license key is available in the extension under <strong>Settings</strong> while Pro is active, and the purchase email we sent you contains it too — that email has an “Open your license key” link that shows the key with a copy button. If Pro never activated after payment, email <a href="mailto:support@manilamail.app">support@manilamail.app</a> from the address you bought with and we'll sort it out.</p>
-
-    <h2>How do I cancel or get a refund?</h2>
-    <p>You can cancel anytime from the extension's Settings or through Paddle; access continues until the end of your billing period, and the extension drops back to the free tier on its own within a few days of that. Not satisfied? We offer a 14-day money-back guarantee — see our <a href="terms.html#refunds">Refund Policy</a>.</p>
-
-    <h2>Detection looks broken / "detection paused"</h2>
-    <p>Gmail occasionally changes its layout. If you see a "detection is paused" notice, reload Gmail and make sure you're on the latest version of the extension. If it persists, email us — we'll push a fix.</p>
+  <div class="doc-head">
+    <div class="wrap">
+      <p class="eyebrow">Help</p>
+      <h1 class="serif">Support</h1>
+      <p class="lede">Questions, bugs, billing, or feedback — we're happy to help.</p>
+    </div>
   </div>
+
+  <main class="wrap doc-body">
+    <div class="doc-prose">
+      <div class="contact-box">
+        Email us at <a href="mailto:support@manilamail.app">support@manilamail.app</a> and we'll get back to you, usually within a day.
+      </div>
+
+      <h2>How does Manila Mail Manager find my subscriptions?</h2>
+      <p>It reads the subscription emails already in your Gmail inbox — entirely inside your browser. It does <strong>not</strong> use the Gmail API, and your email content is never sent to any server. Click the extension icon and "Scan Inbox" to detect them.</p>
+
+      <h2>Is my email private?</h2>
+      <p>Yes. All detection happens locally in your browser, and your detected subscriptions are stored on your own device. The only things that leave your browser are requests to our licensing service (for trials, checkout, and license verification — never email content) and your own Google profile photo. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
+
+      <h2>How do I unsubscribe?</h2>
+      <p>Open the extension, find the sender, and click <strong>Unsubscribe</strong> — we take you straight to the right unsubscribe page. Unsubscribing relies on senders honoring the request, so a few stubborn senders may keep emailing.</p>
+
+      <h2>Unsubscribe, ignore, block or spam — which do I want?</h2>
+      <ul>
+        <li><strong>Unsubscribe</strong> asks the sender to stop emailing you, by opening their unsubscribe page.</li>
+        <li><strong>Ignore</strong> hides the sender inside Manila Mail Manager only. You stay subscribed and their emails keep arriving in Gmail — they just stop showing up in your subscription list, your stats, and your Gmail badges. Use it for newsletters you want to keep.</li>
+        <li><strong>Block sender</strong> and <strong>Report as spam</strong> are Gmail's own actions, and they do change how Gmail treats the mail.</li>
+        <li><strong>The wand</strong> (Magic Cleanup) just folds subscription emails out of the list you're looking at, for as long as you're looking at it. Nothing about the mail changes.</li>
+      </ul>
+
+      <h2>How do I ignore a sender, and how do I undo it?</h2>
+      <p>Click <strong>Ignore</strong> on the sender's row in the extension, or choose <strong>Ignore Sender</strong> from the badge menu in Gmail. Ignoring applies to the whole brand, so a company's other sending addresses (say their news and promos addresses) go quiet too, and it sticks across future scans.</p>
+      <p>To undo it, open <strong>Subscriptions</strong>, set the status filter to <strong>Ignored</strong>, and click <strong>Restore</strong> — or <strong>Restore all</strong> to bring everything back. Restoring returns the sender with its history intact; nothing was deleted while it was hidden.</p>
+
+      <h2>What is the wand button next to Compose?</h2>
+      <p>That's <strong>Magic Cleanup</strong>: click it and every subscription email in the current list folds out of view, leaving the mail from real people. Click it again to bring them all back. It's free and included in the free tier.</p>
+      <p>It only changes what you see. Those emails are <strong>not</strong> deleted, archived, marked read, moved or unsubscribed, and nothing is changed in Gmail itself — so anything you hide reappears on its own when you switch labels, run a search, or reload Gmail.</p>
+      <p>The counter next to the wand opens a list of exactly what's hidden, with a <strong>Show</strong> button to bring back individual emails. If you'd rather not have the button in your toolbar, turn off <strong>Magic Cleanup Button</strong> in the extension's <strong>Settings</strong>.</p>
+
+      <h2>What's in Pro, and is there a trial?</h2>
+      <p>Pro adds the inbox health score, the paid-subscription spend tracker, the insights engine (trends, dormant senders, cleanup tips), automatic detection of new subscriptions, bulk unsubscribe, and unlimited tracking. Pro starts with a <strong>7-day free trial — no card required</strong>; tap "Start free trial" in the extension.</p>
+
+      <h2>How do I activate Pro?</h2>
+      <p>Pro activates automatically: after payment, the extension detects your completed checkout and unlocks Pro within a couple of minutes — you can close the checkout tab as soon as payment succeeds. If you have a license key (for example from another device), open the extension &rarr; <strong>Settings</strong>, paste it into "License key", and click <strong>Activate</strong>.</p>
+
+      <h2>How many devices can I use Pro on?</h2>
+      <p>Up to <strong>three</strong>, and a separate Chrome profile counts as one of them — so a work laptop, a home machine and a second profile all fit. Paste your license key into <strong>Settings</strong> on each one.</p>
+
+      <h2>It says I've used all my devices.</h2>
+      <p>That happens after a reinstall, clearing the extension's data, or a new laptop — the old installation still holds a slot. Open <strong>Settings</strong> &rarr; <strong>Deactivate my other devices</strong>, then click <strong>Activate</strong> on the device you're using now; the released devices drop back to the free tier the next time they check in. Still stuck? Email us.</p>
+
+      <h2>I lost my license key.</h2>
+      <p>Your license key is available in the extension under <strong>Settings</strong> while Pro is active, and the purchase email we sent you contains it too — that email has an “Open your license key” link that shows the key with a copy button. If Pro never activated after payment, email <a href="mailto:support@manilamail.app">support@manilamail.app</a> from the address you bought with and we'll sort it out.</p>
+
+      <h2>How do I cancel or get a refund?</h2>
+      <p>You can cancel anytime from the extension's Settings or through Paddle; access continues until the end of your billing period, and the extension drops back to the free tier on its own within a few days of that. Not satisfied? We offer a 14-day money-back guarantee — see our <a href="terms.html#refunds">Refund Policy</a>.</p>
+
+      <h2>Detection looks broken / "detection paused"</h2>
+      <p>Gmail occasionally changes its layout. If you see a "detection is paused" notice, reload Gmail and make sure you're on the latest version of the extension. If it persists, email us — we'll push a fix.</p>
+    </div>
+  </main>
+
+  <div class="closing closing-slim">
+    <footer class="wrap">
+      <div class="footer-left">
+        <img src="hoa-logo.png" alt="House of Arqam Ventures LLC" width="24" height="24" loading="lazy">
+        © House of Arqam Ventures LLC · makers of <a href="https://sponsir.app" rel="noopener">Sponsir</a>
+      </div>
+      <div class="footer-links">
+        <a href="demo.html">Demo</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="terms.html#refunds">Refunds</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/home.js"></script>
 </body>
 </html>

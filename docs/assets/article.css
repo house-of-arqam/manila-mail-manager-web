@@ -1,0 +1,61 @@
+/* Support, Privacy and Terms: the home page's sticky nav, espresso header band
+   and footer, with a single readable column of serif-headed prose. */
+.doc-head {
+  background: var(--grain-dark), var(--espresso);
+  color: var(--on-dark);
+  color-scheme: dark;
+  padding: 56px 0 52px;
+}
+.doc-head .eyebrow { color: var(--amber-light); }
+.doc-head h1 { font-size: 56px; margin: 14px 0 14px; color: #fff; }
+.doc-head .updated, .doc-head .lede { color: var(--on-dark-muted); font-size: 16px; max-width: 560px; }
+
+.doc-body { padding-top: 64px; padding-bottom: 96px; }
+.doc-prose { max-width: 700px; }
+.doc-prose h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 27px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 48px 0 12px;
+}
+.doc-prose > h2:first-child, .doc-prose > .contact-box:first-child + h2 { margin-top: 0; }
+.doc-prose p, .doc-prose li { color: var(--muted); font-size: 16px; line-height: 1.75; }
+.doc-prose p { margin: 0 0 16px; }
+.doc-prose ul { margin: 0 0 18px 20px; }
+.doc-prose li { margin-bottom: 8px; padding-left: 4px; }
+.doc-prose li::marker { color: var(--accent); }
+.doc-prose strong { color: var(--body-strong); font-weight: 600; }
+.doc-prose a { color: var(--accent-ink); text-underline-offset: 3px; }
+.doc-prose a:hover { color: var(--accent); }
+.doc-prose code {
+  font-size: 0.88em;
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+.doc-prose [id] { scroll-margin-top: 92px; }
+
+.contact-box {
+  margin: 0 0 48px;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  font-size: 16px;
+  color: var(--body-strong);
+}
+.contact-box a { font-weight: 600; }
+
+.closing-slim { padding-top: 0; }
+.closing-slim footer.wrap::before { display: none; }
+
+@media (max-width: 720px) {
+  .doc-head { padding: 40px 0 36px; }
+  .doc-head h1 { font-size: 40px; }
+  .doc-body { padding-top: 44px; padding-bottom: 72px; }
+  .doc-prose h2 { font-size: 23px; margin-top: 40px; }
+}
