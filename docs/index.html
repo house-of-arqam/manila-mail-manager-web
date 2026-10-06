@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js/; connect-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Manila Mail Manager — Clean up your inbox</title>
   <meta name="description" content="Find and unsubscribe from email subscriptions in Gmail in seconds. Free Chrome extension, runs in your browser, no account needed.">
@@ -12,7 +12,10 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Manila Mail Manager — Clean up your inbox">
   <meta property="og:description" content="Find and unsubscribe from email subscriptions in Gmail in seconds. Free Chrome extension.">
-  <meta property="og:image" content="https://manilamail.app/screenshot-popup.png">
+  <meta property="og:image" content="https://manilamail.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Manila Mail Manager: find and unsubscribe from Gmail subscriptions">
   <meta property="og:url" content="https://manilamail.app/">
   <meta property="og:type" content="website">
 
@@ -20,7 +23,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Manila Mail Manager — Clean up your inbox">
   <meta name="twitter:description" content="Find and unsubscribe from email subscriptions in Gmail in seconds.">
-  <meta name="twitter:image" content="https://manilamail.app/screenshot-popup.png">
+  <meta name="twitter:image" content="https://manilamail.app/og-image.png">
+  <meta name="twitter:image:alt" content="Manila Mail Manager: find and unsubscribe from Gmail subscriptions">
 
   <link rel="canonical" href="https://manilamail.app/">
 
@@ -91,7 +95,7 @@
           <div class="folderframe">
             <div class="folder-tab"></div>
             <div class="folder-body">
-              <img src="screenshot-popup.png" alt="Manila Mail Manager popup listing subscriptions with an Unsubscribe button beside each" class="folder-shot" width="758" height="1196" fetchpriority="high">
+              <img src="screenshot-popup.png" alt="Manila Mail Manager popup listing subscriptions with an Unsubscribe button beside each" class="folder-shot" width="756" height="1196" fetchpriority="high">
             </div>
           </div>
         </div>

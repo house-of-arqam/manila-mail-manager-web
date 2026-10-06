@@ -130,7 +130,7 @@ nav {
 
 .hero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 40px;
   padding: 56px 0 72px;
   align-items: start;
@@ -261,7 +261,7 @@ h2.serif { font-size: 44px; margin: 14px 0 0; }
 }
 .pill-solid { background: var(--ink); color: var(--paper); }
 
-.vis-score { display: grid; grid-template-columns: 110px 1fr; gap: 18px; align-items: center; }
+.vis-score { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; }
 .score { font-size: 58px; line-height: 1; }
 .score small { font-size: 16px; color: var(--soft); font-family: var(--font-sans); }
 .bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--soft); }
@@ -375,12 +375,22 @@ footer.wrap {
   flex-wrap: wrap;
   padding-top: 28px;
   padding-bottom: 28px;
-  border-top: 1px solid var(--on-dark-rule);
+  position: relative;
   font-size: 13px;
   color: var(--on-dark-muted);
 }
+/* The rule spans the content box so it lines up with the text above it. */
+footer.wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 40px;
+  right: 40px;
+  border-top: 1px solid var(--on-dark-rule);
+}
 .footer-left { display: flex; align-items: center; gap: 10px; }
-.footer-left img { width: 22px; height: 22px; border-radius: 5px; }
+/* The logo is dark ink, so it sits on a light tile on the espresso band. */
+.footer-left img { width: 24px; height: 24px; padding: 2px; border-radius: 5px; background: var(--on-dark); }
 .footer-left a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .footer-left a:hover { color: var(--on-dark); }
 .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
@@ -389,26 +399,27 @@ footer.wrap {
 
 /* Responsive */
 @media (max-width: 1000px) {
-  .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 40px; }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-top: 40px; }
   .hero h1 { font-size: 52px; }
   .hero-visual { justify-content: flex-start; }
   .folderframe { margin-top: 0; }
   .split, .faq, .closing-grid { grid-template-columns: 1fr; gap: 32px; }
   .closing-cta { text-align: left; }
-  .item { grid-template-columns: 56px 1fr; }
+  .item { grid-template-columns: 56px minmax(0, 1fr); }
   .item .vis { grid-column: 2; }
   .pricing-head { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 720px) {
   .wrap { padding-left: 22px; padding-right: 22px; }
+  footer.wrap::before { left: 22px; right: 22px; }
   section.wrap { padding-top: 72px; padding-bottom: 72px; }
   .pricing { padding: 72px 0; }
   .closing { padding-top: 72px; }
   .closing-grid { padding-bottom: 72px; }
   .hero h1 { font-size: 42px; }
   h2.serif, .faq h2, .closing h2 { font-size: 34px; }
-  .item { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+  .item { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 32px 0; }
   .item .n { font-size: 26px; }
   .item .vis { grid-column: 1; }
   .plans { grid-template-columns: 1fr; }
