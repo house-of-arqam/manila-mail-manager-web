@@ -33,3 +33,5 @@ jobs:
       - run: node scripts/check-links.js
 
       - run: node scripts/check-csp.js
+
+      - run: node scripts/stamp-assets.js --check
