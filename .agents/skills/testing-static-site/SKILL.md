@@ -45,20 +45,22 @@ address bar**, not page content. Zoom-crop it to confirm before reporting a real
 
 ## Things that need explicit verification (they are easy to silently break)
 
-Home-page behavior lives in `docs/assets/home.js`. The page is static by design (editorial
-layout: espresso masthead, numbered ledger, two-tone pricing) — there are no counters, roller,
-typing line, scroll-progress bar or scroll reveals, so blank space or a missing element is a real
-bug, not an animation that has not fired yet.
+Home-page behavior lives in `docs/assets/home.js`. Effects play once, never loop: the hero
+inbox scan, slot-machine digits (`slotRoll`: hero counts, the `#score-value` 72, and
+`#pricing-amount` on a Monthly/Yearly click), and fade-up reveals for headings/cards that start
+below the fold (`.reveal-pending` until seen). After scrolling the whole page,
+`document.querySelectorAll('.reveal-pending').length` must be 0; blank space after that is a real
+bug. With reduced motion none of them run and the static markup shows.
 
-- **Web fonts** — Fraunces (headlines, `.serif`) and Inter are self-hosted from
+- **Web fonts** — Instrument Serif (headlines, `.serif`) and Geist are self-hosted from
   `docs/assets/fonts/` and every page's CSP carries `font-src 'self'`. Check
-  `document.fonts.check('16px Fraunces')` and that headings do not render in Georgia; a CSP
+  `document.fonts.check('40px "Instrument Serif"')` and that headings do not render in Georgia; a CSP
   violation in the console means a page's meta tag lost `font-src`.
 - **Espresso bands** — `.masthead`, `.plan-pro` and `.closing` set `color-scheme: dark` and stay
   dark in both themes; only the body sections flip with `data-theme` / the OS preference. The
   folder frame around the hero screenshot stays kraft (fixed colors) in both.
 - **Pricing toggle** — `#billing-yearly` is pressed on load ($29.99 /year); `#billing-monthly`
-  swaps `#pricing-price`/`#pricing-period`/`#pricing-desc` to $4.99 /month.
+  swaps `#pricing-amount`/`#pricing-period`/`#pricing-desc` to $4.99 /month.
 - **Theme init race** — an extension in the test Chrome profile has been seen adding
   `class="js" data-theme="dark"` to `<html>` on first load; if a "light" screenshot comes out
   dark with `localStorage.mmm-theme` unset, that is the profile, not `theme.js`. Reload.

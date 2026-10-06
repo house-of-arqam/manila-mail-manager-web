@@ -1,3 +1,66 @@
+const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Runs onSeen once, the first time el scrolls into view.
+function whenSeen(el, onSeen, threshold = 0.2) {
+  if (!('IntersectionObserver' in window)) {
+    onSeen(el);
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    observer.disconnect();
+    onSeen(el);
+  }, { threshold });
+  observer.observe(el);
+}
+
+// Slot-machine digits: each digit is a reel of 0-9 that rolls to its value.
+// spin rebuilds the reels from 0 and adds a full turn before landing.
+function slotRoll(el, text, spin = false) {
+  if (!motionOK) {
+    el.textContent = text;
+    return;
+  }
+  const chars = Array.from(text);
+  const shape = chars.map(c => (/\d/.test(c) ? '#' : c)).join('');
+  let reel = el.querySelector('.slot-reel');
+  if (spin || !reel || reel.dataset.shape !== shape) {
+    const spoken = document.createElement('span');
+    spoken.className = 'sr-only';
+    reel = document.createElement('span');
+    reel.className = 'slot-reel';
+    reel.setAttribute('aria-hidden', 'true');
+    reel.dataset.shape = shape;
+    chars.forEach(c => {
+      if (!/\d/.test(c)) {
+        const plain = document.createElement('span');
+        plain.textContent = c;
+        reel.appendChild(plain);
+        return;
+      }
+      const digit = document.createElement('span');
+      digit.className = 'slot-digit';
+      const strip = document.createElement('span');
+      strip.className = 'slot-strip';
+      for (let i = 0; i < 20; i++) {
+        const n = document.createElement('span');
+        n.textContent = String(i % 10);
+        strip.appendChild(n);
+      }
+      digit.appendChild(strip);
+      reel.appendChild(digit);
+    });
+    el.replaceChildren(spoken, reel);
+    void reel.offsetWidth;
+  }
+  el.querySelector('.sr-only').textContent = text;
+  const digits = chars.filter(c => /\d/.test(c)).map(Number);
+  reel.querySelectorAll('.slot-strip').forEach((strip, i) => {
+    strip.style.transitionDelay = spin ? i * 0.08 + 's' : '0s';
+    strip.style.transform = 'translateY(' + -(spin ? 10 + digits[i] : digits[i]) * 1.1 + 'em)';
+  });
+}
+
 // FAQ accordion
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -20,7 +83,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 // cramming both into the sub-line.
 const monthlyBtn = document.getElementById('billing-monthly');
 const yearlyBtn = document.getElementById('billing-yearly');
-const priceEl = document.getElementById('pricing-price');
+const amountEl = document.getElementById('pricing-amount');
 const periodEl = document.getElementById('pricing-period');
 const priceDescEl = document.getElementById('pricing-desc');
 
@@ -37,9 +100,14 @@ const PLANS = {
   }
 };
 
-function showPlan(name) {
+let currentPlan = null;
+
+function showPlan(name, animate) {
+  if (name === currentPlan) return;
+  currentPlan = name;
   const plan = PLANS[name];
-  priceEl.firstChild.nodeValue = plan.amount + ' ';
+  if (animate) slotRoll(amountEl, plan.amount, true);
+  else amountEl.textContent = plan.amount;
   periodEl.textContent = plan.period;
   priceDescEl.textContent = plan.desc;
   monthlyBtn.setAttribute('aria-pressed', String(name === 'monthly'));
@@ -47,8 +115,8 @@ function showPlan(name) {
 }
 
 if (monthlyBtn && yearlyBtn) {
-  monthlyBtn.addEventListener('click', () => showPlan('monthly'));
-  yearlyBtn.addEventListener('click', () => showPlan('yearly'));
+  monthlyBtn.addEventListener('click', () => showPlan('monthly', true));
+  yearlyBtn.addEventListener('click', () => showPlan('yearly', true));
   showPlan('yearly');
 }
 
@@ -106,15 +174,15 @@ if (heroScan && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) 
     });
     progress.style.setProperty('--p', '0');
     label.textContent = 'Scanning inbox…';
-    foundEl.textContent = '0';
-    goneEl.textContent = '0';
+    slotRoll(foundEl, '0');
+    slotRoll(goneEl, '0');
 
     let t = 500;
     const at = (delay, fn) => setTimeout(fn, delay);
     rows.forEach((row, i) => {
       at(t + i * 450, () => {
         row.classList.add('is-seen');
-        foundEl.textContent = String(i + 1);
+        slotRoll(foundEl, String(i + 1));
         progress.style.setProperty('--p', String((i + 1) / rows.length));
       });
     });
@@ -127,7 +195,7 @@ if (heroScan && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) 
         row.classList.remove('is-hl');
         row.classList.add('is-done');
         setTag(row, 'done');
-        goneEl.textContent = String(i + 1);
+        slotRoll(goneEl, String(i + 1));
       });
       t += 950;
     });
@@ -170,3 +238,26 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('click', (e) => {
   if (navLinks.classList.contains('open') && !e.target.closest('nav')) setNavOpen(false);
 });
+
+// Reveal: headings and cards below the fold fade up once as they arrive.
+if (motionOK) {
+  const revealTargets = document.querySelectorAll('main h2.serif, .step, .item, .plan, .closing h2');
+  revealTargets.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    const siblings = Array.from(el.parentElement.children).filter(c => c.matches('.step, .plan'));
+    const delay = Math.max(0, siblings.indexOf(el)) * 0.12;
+    el.classList.add('reveal', 'reveal-pending');
+    el.style.transitionDelay = delay + 's';
+    whenSeen(el, () => {
+      el.classList.remove('reveal-pending');
+      setTimeout(() => { el.style.transitionDelay = ''; }, 700 + delay * 1000);
+    }, 0.15);
+  });
+
+  const scoreEl = document.getElementById('score-value');
+  if (scoreEl) {
+    const target = scoreEl.textContent;
+    slotRoll(scoreEl, target.replace(/\d/g, '0'));
+    whenSeen(scoreEl, () => slotRoll(scoreEl, target, true), 0.6);
+  }
+}

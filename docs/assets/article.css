@@ -7,7 +7,7 @@
   padding: 56px 0 52px;
 }
 .doc-head .eyebrow { color: var(--amber-light); }
-.doc-head h1 { font-size: 56px; margin: 14px 0 14px; color: #fff; }
+.doc-head h1 { font-size: 66px; margin: 14px 0 14px; color: #fff; }
 .doc-head .updated, .doc-head .lede { color: var(--on-dark-muted); font-size: 16px; max-width: 560px; }
 
 .doc-body { padding-top: 64px; padding-bottom: 96px; }
@@ -15,7 +15,7 @@
 .doc-prose h2 {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: 27px;
+  font-size: 31px;
   letter-spacing: -0.01em;
   line-height: 1.2;
   margin: 48px 0 12px;
@@ -55,7 +55,7 @@
 
 @media (max-width: 720px) {
   .doc-head { padding: 40px 0 36px; }
-  .doc-head h1 { font-size: 40px; }
+  .doc-head h1 { font-size: 48px; }
   .doc-body { padding-top: 44px; padding-bottom: 72px; }
-  .doc-prose h2 { font-size: 23px; margin-top: 40px; }
+  .doc-prose h2 { font-size: 27px; margin-top: 40px; }
 }

@@ -46,8 +46,8 @@
   }
   </script>
 
-  <link rel="stylesheet" href="assets/base.css?v=5767579d9f">
-  <link rel="stylesheet" href="assets/home.css?v=bfb914f501">
+  <link rel="stylesheet" href="assets/base.css?v=353c20ee9c">
+  <link rel="stylesheet" href="assets/home.css?v=2d76b2c662">
 
   <!-- In <head> so a stored theme override applies before first paint -->
   <script src="assets/theme.js?v=4ef19965ff"></script>
@@ -96,7 +96,7 @@
           <p class="lede">Manila finds every subscription hiding in Gmail, shows you who's actually worth keeping, and unsubscribes you from the rest — on your computer, without ever reading your mail.</p>
           <div class="hero-ctas">
             <a href="https://chromewebstore.google.com/detail/eapejkmfejkjkfjimeecbdpkhmkgeipl" target="_blank" rel="noopener" class="btn btn-amber">Add to Chrome — free</a>
-            <a href="demo.html" class="link-arrow">Try the demo inbox →</a>
+            <a href="demo.html" class="link-arrow">Try the demo inbox <span class="arrow" aria-hidden="true">→</span></a>
           </div>
           <p class="hero-fine">Free forever for cleanup · Pro is $4.99/month or $29.99/year · 7-day trial, no card</p>
         </div>
@@ -212,7 +212,7 @@
           <p>An inbox health score, dormant senders you never open, and a spend tracker that adds up the subscriptions you're still paying for.</p>
         </div>
         <div class="vis vis-score" aria-hidden="true">
-          <div class="score serif">72<small>/100</small></div>
+          <div class="score serif"><span id="score-value">72</span><small>/100</small></div>
           <div class="bars">
             <div class="bar-label"><span>Dormant senders</span><span>31</span></div>
             <div class="bar"><span class="bar-fill w62"></span></div>
@@ -254,7 +254,7 @@
           </div>
           <div class="plan plan-pro">
             <p class="plan-name"><span>Pro</span><span class="plan-badge">Most popular</span></p>
-            <p class="plan-price serif" id="pricing-price">$29.99 <small id="pricing-period">/year</small></p>
+            <p class="plan-price serif"><span id="pricing-amount">$29.99</span> <small id="pricing-period">/year</small></p>
             <p class="plan-desc" id="pricing-desc">Works out to $2.50/month, billed once a year</p>
             <ul class="plan-features">
               <li>Everything in Free</li>
@@ -365,6 +365,6 @@
     </footer>
   </section>
 
-  <script src="assets/home.js?v=5cadc00186"></script>
+  <script src="assets/home.js?v=1aeb2f13a8"></script>
 </body>
 </html>
